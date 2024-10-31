@@ -4,14 +4,14 @@ It allows users to create, read, update, and delete notes effortlessly while als
 The application is fully responsive, making it accessible on any device without an internet connection.
 
 **Key Features:**
-  ->MongoDB Integration    : Utilizes MongoDB for data storage, enabling flexible note management and storing unstructured data.
-  ->CRUD Operations        : Create, read, update, and delete notes easily.
-  ->File Uploads           : Supports uploading images and voice recordings for each note.
-  ->Dynamic Content        : Fetches inspirational quotes from an external API to enhance user experience.
-  ->Download Notes         : Allows users to download notes as text files for offline access.
-  ->User-Friendly Interface: Built with Jinja2 for powerful templating and a clean, intuitive UI.
-  ->Secure File Handling   : Uses werkzeug for secure file uploads and handling.
-  ->Quote Generation       : using a random quote generator api for generting quotes in homepage. 
+  1.MongoDB Integration    : Utilizes MongoDB for data storage, enabling flexible note management and storing unstructured data.
+  2.CRUD Operations        : Create, read, update, and delete notes easily.
+  3.File Uploads           : Supports uploading images and voice recordings for each note.
+  4.Dynamic Content        : Fetches inspirational quotes from an external API to enhance user experience.
+  5.Download Notes         : Allows users to download notes as text files for offline access.
+  6.User-Friendly Interface: Built with Jinja2 for powerful templating and a clean, intuitive UI.
+  7.Secure File Handling   : Uses werkzeug for secure file uploads and handling.
+  8.Quote Generation       : using a random quote generator api for generting quotes in homepage. 
 
 **SCREENSHOTS**
 
