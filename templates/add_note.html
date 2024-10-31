@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Note</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Define a CSS class for highlighting */
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Add Note</h2>
+        <form id="addNoteForm" action="/add_note" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">Title*</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Content*</label>
+                <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">Insert Image</label>
+                <input type="file" class="form-control-file" id="image" name="image">
+            </div>
+            <div class="form-group">
+                <label for="voice">Insert Voice Record</label>
+                <input type="file" class="form-control-file" id="voice" name="voice">
+            </div>
+            <button type="submit" class="btn btn-primary">Add Note</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('content').addEventListener('mouseup', function () {
+            var selectedText = window.getSelection().toString().trim();
+            if (selectedText !== '') {
+                var textarea = document.getElementById('content');
+                var startPos = textarea.selectionStart;
+                var endPos = textarea.selectionEnd;
+                var replacement = '<span class="highlight">' + selectedText + '</span>';
+                textarea.value = textarea.value.substring(0, startPos) + replacement + textarea.value.substring(endPos);
+            }
+        });
+    </script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See Notes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Notes</h2>
+        <div class="row">
+            {% for note in notes %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ note.title }}</h5>
+                        <div id="content_{{ note._id }}" class="note-content">
+                            <p class="card-text">{{ note.content }}</p>
+                            
+                        </div>
+                        <button class="btn btn-info" onclick="toggleContent('{{ note._id }}')">View Content</button>
+                        <!-- Add a hidden input field to store the note's ID -->
+                        <input type="hidden" id="note_id" value="{{ note._id }}">
+                        {% if note.image_path %}
+                        <img src="{{ note.image_path }}" class="img-fluid mb-2" alt="Image">
+                        {% endif %}
+                        {% if note.voice_path %}
+                        <audio controls>
+                            <source src="{{ note.voice_path }}" type="audio/ogg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Menu
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <!-- Pass the note's ID as a parameter to the update_note and delete_note routes -->
+                                <a class="dropdown-item" href="/update_note/{{ note.title }}">Update</a>
+                                <a class="dropdown-item" href="/delete_note/{{ note._id }}">Delete</a>
+                                <!-- Add "Share as PDF" option in the dropdown menu -->
+                                <a class="dropdown-item" href="{{ url_for('share_as_txt', title=note.title) }}">Download</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        // Function to toggle content visibility
+        function toggleContent(noteId) {
+            var contentDiv = document.getElementById("content_" + noteId);
+            var button = document.querySelector("button[data-note-id='" + noteId + "']");
+            if (contentDiv.style.display === "none") {
+                contentDiv.style.display = "block";
+                button.textContent = "Hide Content";
+            } else {
+                contentDiv.style.display = "none";
+                button.textContent = "View Content";
+            }
+        }
+    </script>
+</body>
+</html>
+{% endblock %}
