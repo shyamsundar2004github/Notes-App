@@ -3,7 +3,7 @@ FlaskNotesApp is a feature-rich web-based note-taking application built with Fla
 It allows users to create, read, update, and delete notes effortlessly while also offering unique functionalities such as voice notes and image attachments. 
 The application is fully responsive, making it accessible on any device without an internet connection.
 
-**Key Features:**
+Key Features:
   1.MongoDB Integration    : Utilizes MongoDB for data storage, enabling flexible note management and storing unstructured data.
   2.CRUD Operations        : Create, read, update, and delete notes easily.
   3.File Uploads           : Supports uploading images and voice recordings for each note.
